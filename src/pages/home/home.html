@@ -1,17 +1,26 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>To do list</ion-title>
   </ion-navbar>
+ 
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  <h2>Manage your tasks here!</h2>
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    Use the floating button to add or close tasks.
+  <!--
+ <ion-buttons end>
+  <button ion-button round>Add</button>
+  <button ion-button round color="danger">Close</button>
+</ion-buttons>
+ -- >
+    <!-- Real floating action button, fixed. It will not scroll with the content -->
+    <ion-fab bottom right >
+        <button ion-fab>Actions</button>
+        <ion-fab-list side="top">
+          <button ion-fab color="secondary">Add</button>
+          <button ion-fab color="danger">Close</button>
+        </ion-fab-list>
+      </ion-fab>
 </ion-content>
