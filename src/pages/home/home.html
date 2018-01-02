@@ -19,8 +19,8 @@
     <ion-fab bottom right >
         <button ion-fab>Actions</button>
         <ion-fab-list side="top">
-          <button ion-fab color="secondary">Add</button>
-          <button ion-fab color="danger">Close</button>
+          <button ion-fab color="secondary" (click)="AddPrompt()">Add</button>
+          <button ion-fab color="danger" (click)="ClosePrompt()">Close</button>
         </ion-fab-list>
       </ion-fab>
 </ion-content>
