@@ -7,14 +7,31 @@ import {NavController, ToastController, AlertController, NavParams} from 'ionic-
 })
 export class HomePage {
   sortByAlpha: Boolean=false;
+  searchQuery: string = '';
   sortText: String="Time";
   tasks: Array<{title: String, date: Date, completed: Boolean}>;
   constructor(public alertCtrl: AlertController, public toastCtrl: ToastController, public navParams: NavParams) {
+    this.initializeTasks();
+  }
+
+  initializeTasks() {
     let localTasks = localStorage.getItem("tasks");
     if(localTasks!=null)
       this.tasks=JSON.parse(localTasks);
     else
       this.tasks=[];
+  }
+
+  getItems(ev: any) {
+    this.initializeTasks();
+
+    let val = ev.target.value;
+    this.searchQuery=val;
+    if (val && val.trim() != '') {
+      this.tasks = this.tasks.filter((task) => {
+        return (task.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
   sortAbc()
