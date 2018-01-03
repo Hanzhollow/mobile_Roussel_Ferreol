@@ -28,6 +28,14 @@ export class HomePage {
     this.sortText="Name";
   }
 
+  sortclicked()
+  {
+    if(this.sortByAlpha)
+      this.sortTime();
+    else
+      this.sortAbc();
+  }
+
   sortTime()
   {
     this.sortByAlpha=false;
@@ -131,6 +139,7 @@ export class HomePage {
                 i--;
               }
             }
+            localStorage.setItem("tasks", JSON.stringify(this.tasks));
           }
         }
       ]
