@@ -3,17 +3,15 @@
       <ion-title>Settings</ion-title>
     </ion-navbar>
   </ion-header>
-  
+
   <ion-content padding>
     <ion-item>
       <ion-label>Sort tasks by</ion-label>
-      <ion-select interface="popover" id="SortBy">
+      <ion-select [(ngModel)]="checkup" #C (ionChange)="onChange(C.value)" interface="popover" id="SortBy">
         <ion-option>Last added</ion-option>
         <ion-option>Alphabetical</ion-option>
-        <ion-option>Priority</ion-option>  
-      </ion-select> 
+      </ion-select>
     </ion-item>
   </ion-content>
-  
-      
-     
+
+

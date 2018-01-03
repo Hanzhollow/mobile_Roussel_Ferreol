@@ -9,7 +9,7 @@
   <div *ngIf="tasks.length<=0">
   <h2>Manage your tasks here!</h2>
   <p>
-    Use the floating button to add or delete tasks cards, click on a task card to edit it.
+    Use the floating button to add tasks or delete completed ones. Click on a task card to edit it.
   </p>
   </div>
   <ion-item *ngFor="let task of tasks"
@@ -18,6 +18,14 @@
             (click)="task.completed = !task.completed">
     {{task.title}}
   </ion-item>
+
+  <ion-fab bottom left >
+    <button ion-fab>Sort</button>
+    <ion-fab-list side="top">
+      <button ion-fab color="secondary" (click)="sortAbc()">Abc</button>
+      <button ion-fab color="danger" (click)="sortTime()">Time</button>
+    </ion-fab-list>
+  </ion-fab>
 
   <ion-fab bottom right >
     <button ion-fab>Actions</button>

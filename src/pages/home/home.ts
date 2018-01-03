@@ -1,26 +1,50 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, AlertController } from 'ionic-angular';
+import {NavController, ToastController, AlertController, NavParams} from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  tasks: Array<{title: String, completed: Boolean}>;
-  constructor(public alertCtrl: AlertController, public toastCtrl: ToastController) {
+  sortByAlpha: Boolean=false;
+  tasks: Array<{title: String, date: Date, completed: Boolean}>;
+  constructor(public alertCtrl: AlertController, public toastCtrl: ToastController, public navParams: NavParams) {
     this.tasks=[];
+    console.log("constructor", navParams.get("sortBy"));
+  }
+
+  sortAbc()
+  {
+    this.sortByAlpha=true;
+    this.tasks.sort((leftside, rightside): number => {
+      if (leftside.title < rightside.title) return -1;
+      if (leftside.title > rightside.title) return 1;
+      return 0;
+    })
+  }
+
+  sortTime()
+  {
+    this.sortByAlpha=false;
+    this.tasks.sort((leftside, rightside): number => {
+      if (leftside.date < rightside.date) return -1;
+      if (leftside.date > rightside.date) return 1;
+      return 0;
+    })
   }
 
   addTask(res)
   {
-    this.tasks.push({title: res, completed: false});
-    this.tasks.sort((leftside, rightside): number => {
-      if(leftside.title < rightside.title)return -1;
-      if(leftside.title > rightside.title)return 1;
-      return 0;
-    })
-    console.log("sorted");
+    this.tasks.push({title: res, date: new Date(), completed: false});
+    console.log("navparams",this.navParams.get("sortBy"));
+    if(this.sortByAlpha) {
+      this.tasks.sort((leftside, rightside): number => {
+        if (leftside.title < rightside.title) return -1;
+        if (leftside.title > rightside.title) return 1;
+        return 0;
+      })
+      console.log("sorted");
+    }
   }
 
   failedAlert(text) {
@@ -59,13 +83,11 @@ export class HomePage {
           text: 'Next',
           handler: data => {
             if(data.name!="") {
-              console.log('Next clicked');
-              console.log(this.tasks);
               this.addTask(data.name);
             }
             else
             {
-              this.failedAlert("A name is required");
+              this.failedAlert("A name  and a priority is required");
             }
             }
         }
