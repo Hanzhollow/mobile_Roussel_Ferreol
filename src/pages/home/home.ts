@@ -7,18 +7,20 @@ import { NavController, ToastController, AlertController } from 'ionic-angular';
 })
 export class HomePage {
 
-  tasks: Array<any>;
+  tasks: Array<{title: String, completed: Boolean}>;
   constructor(public alertCtrl: AlertController, public toastCtrl: ToastController) {
-    this.tasks=[{title: "First", completed: true},
-      {title: "Second", completed: false},
-      {title: "Third", completed: false},
-    ];
-    console.log(this.tasks)
+    this.tasks=[];
   }
 
   addTask(res)
   {
     this.tasks.push({title: res, completed: false});
+    this.tasks.sort((leftside, rightside): number => {
+      if(leftside.title < rightside.title)return -1;
+      if(leftside.title > rightside.title)return 1;
+      return 0;
+    })
+    console.log("sorted");
   }
 
   failedAlert(text) {
