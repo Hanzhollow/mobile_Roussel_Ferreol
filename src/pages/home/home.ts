@@ -10,7 +10,11 @@ export class HomePage {
   sortText: String="Time";
   tasks: Array<{title: String, date: Date, completed: Boolean}>;
   constructor(public alertCtrl: AlertController, public toastCtrl: ToastController, public navParams: NavParams) {
-    this.tasks=[];
+    let localTasks = localStorage.getItem("tasks");
+    if(localTasks!=null)
+      this.tasks=JSON.parse(localTasks);
+    else
+      this.tasks=[];
   }
 
   sortAbc()
@@ -46,7 +50,9 @@ export class HomePage {
         return 0;
       })
       console.log("sorted");
+
     }
+    localStorage.setItem("tasks", JSON.stringify(this.tasks));
   }
 
   failedAlert(text) {
