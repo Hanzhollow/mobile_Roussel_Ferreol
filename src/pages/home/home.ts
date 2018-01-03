@@ -99,10 +99,10 @@ export class HomePage {
           text: 'Ok',
           handler: data => {
             if(data.name!="") {
-              if(data.name.length< 40)
+              if(data.name.length< 85)
                 this.addTask(data.name);
               else
-                this.failedAlert("The name must have less than 40 characters");
+                this.failedAlert("The name must have less than 85 characters");
             }
             else
             {
