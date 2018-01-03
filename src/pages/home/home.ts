@@ -85,11 +85,14 @@ export class HomePage {
           text: 'Next',
           handler: data => {
             if(data.name!="") {
-              this.addTask(data.name);
+              if(data.name.length< 40)
+                this.addTask(data.name);
+              else
+                this.failedAlert("The name must have less than 40 characters");
             }
             else
             {
-              this.failedAlert("A name  and a priority is required");
+              this.failedAlert("A name is required");
             }
             }
         }
