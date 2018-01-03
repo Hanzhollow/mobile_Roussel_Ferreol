@@ -82,7 +82,7 @@ export class HomePage {
           }
         },
         {
-          text: 'Next',
+          text: 'Ok',
           handler: data => {
             if(data.name!="") {
               if(data.name.length< 40)
