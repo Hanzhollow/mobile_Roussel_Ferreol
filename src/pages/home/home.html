@@ -2,33 +2,39 @@
   <ion-navbar color="primary">
     <ion-title>To do list</ion-title>
   </ion-navbar>
- 
+
 </ion-header>
 
 <ion-content padding>
-  <h2>Manage your tasks here!</h2>
+  <!--<h2>Manage your tasks here!</h2>
   <p>
     Use the floating button to add or close tasks cards, click on a task card to edit it.
-  </p>
-    <ion-fab bottom right >
-        <button ion-fab>Actions</button>
-        <ion-fab-list side="top">
-          <button ion-fab color="secondary" (click)="AddPrompt()">Add</button>
-          <button ion-fab color="danger" (click)="ClosePrompt()">Close</button>
-        </ion-fab-list>
-      </ion-fab>
-      <ion-content padding>
-        <ion-card>
-          <ion-card-content>
-            <ion-title><ion-checkbox color='danger' [(ngModel)]="ExampleCheckbox" (ionChange)="updateExamplecheckbox()"disabled=true></ion-checkbox>Name of the task</ion-title>	
-            <ion-list>
-              <ion-item>
-                <ion-label>Date added</ion-label>
-                <ion-label>Priority</ion-label>
-                <ion-label>Descrption</ion-label>
-              </ion-item>
-              </ion-list>
-          </ion-card-content>
-        </ion-card>
-        </ion-content>
+  </p>-->
+  <ion-item *ngFor="let task of tasks"
+            class="item-icon-right"
+            [ngClass]="{'complete':task.completed}"
+            (click)="task.completed = !task.completed">
+    {{task.title}}
+  </ion-item>
+
+  <ion-fab bottom right >
+    <button ion-fab>Actions</button>
+    <ion-fab-list side="top">
+      <button ion-fab color="secondary" (click)="AddPrompt()">Add</button>
+      <button ion-fab color="danger" (click)="ClosePrompt()">Delete</button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-content padding>
+    <ion-card>
+      <ion-card-content>
+        <ion-title><ion-checkbox color='danger' [(ngModel)]="ExampleCheckbox" (ionChange)="updateExamplecheckbox()"disabled=true></ion-checkbox>Name of the task</ion-title>
+        <ion-list>
+          <ion-item>
+            <ion-label>Priority</ion-label>
+            <ion-label>Descrption</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
 </ion-content>
