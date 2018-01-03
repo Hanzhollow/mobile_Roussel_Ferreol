@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {NavController, ToastController, AlertController, NavParams} from 'ionic-angular';
+import {ToastController, AlertController, NavParams} from 'ionic-angular';
+//import {NavController} from 'ionic-angular';
+
 
 @Component({
   selector: 'page-home',
