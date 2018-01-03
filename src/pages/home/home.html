@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>To do list</ion-title>
+    <ion-title>To do list </ion-title>
+
   </ion-navbar>
 
 </ion-header>
@@ -26,7 +27,7 @@
       <button ion-fab color="danger" (click)="sortTime()">Time</button>
     </ion-fab-list>
   </ion-fab>
-
+  <ion-fab bottom center> Sorted by {{sortText}} </ion-fab>
   <ion-fab bottom right >
     <button ion-fab>Actions</button>
     <ion-fab-list side="top">

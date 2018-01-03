@@ -7,10 +7,10 @@ import {NavController, ToastController, AlertController, NavParams} from 'ionic-
 })
 export class HomePage {
   sortByAlpha: Boolean=false;
+  sortText: String="Time";
   tasks: Array<{title: String, date: Date, completed: Boolean}>;
   constructor(public alertCtrl: AlertController, public toastCtrl: ToastController, public navParams: NavParams) {
     this.tasks=[];
-    console.log("constructor", navParams.get("sortBy"));
   }
 
   sortAbc()
@@ -21,6 +21,7 @@ export class HomePage {
       if (leftside.title > rightside.title) return 1;
       return 0;
     })
+    this.sortText="Name";
   }
 
   sortTime()
@@ -31,6 +32,7 @@ export class HomePage {
       if (leftside.date > rightside.date) return 1;
       return 0;
     })
+    this.sortText="Time";
   }
 
   addTask(res)
